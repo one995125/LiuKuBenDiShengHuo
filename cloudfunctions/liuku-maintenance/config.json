@@ -1,0 +1,13 @@
+{
+  "timeout": 20,
+  "triggers": [
+    {
+      "name": "liuku-daily-maintenance",
+      "type": "timer",
+      "config": "0 10 2 * * * *"
+    }
+  ],
+  "permissions": {
+    "openapi": []
+  }
+}

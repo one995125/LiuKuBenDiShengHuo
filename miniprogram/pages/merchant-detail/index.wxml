@@ -1,0 +1,71 @@
+<view class="app-body">
+  <app-header title="商家详情" subtitle="电话和商家信息" badge="已核验" back />
+
+  <view class="app-main detail-main">
+    <view wx:if="{{loading}}" class="surface empty">正在读取商家详情...</view>
+    <view wx:elif="{{!merchant}}" class="surface empty">未找到商家信息，可能已下架或过期。</view>
+    <block wx:else>
+      <view wx:if="{{loadError}}" class="notice">云端暂不可用，当前展示缓存或本地信息。</view>
+      <view class="merchant-identity surface">
+        <image
+          wx:if="{{merchant.images.length}}"
+          class="identity-image"
+          src="{{merchant.images[0]}}"
+          mode="aspectFill"
+        />
+        <view wx:else class="identity-placeholder">店</view>
+        <view class="identity-main">
+          <view class="identity-title">{{merchant.name}}</view>
+          <view class="identity-desc">
+            {{merchant.category}}{{merchant.subCategory ? ' / ' + merchant.subCategory : ''}}{{merchant.area ? ' · ' + merchant.area : ''}}
+          </view>
+        </view>
+        <view class="status-pill status-green">营业中</view>
+      </view>
+
+      <view class="detail-list">
+        <view class="detail-row">
+          <text>电话</text>
+          <view class="phone-list">
+            <text
+              wx:for="{{phoneList}}"
+              wx:key="*this"
+              class="strong"
+            >{{item}}{{index === 0 ? '（主号）' : ''}}</text>
+          </view>
+        </view>
+        <view class="detail-row"><text>微信</text><text>{{merchant.wechat || '暂未提供'}}</text></view>
+        <view wx:if="{{merchant.area}}" class="detail-row"><text>区域</text><text>{{merchant.area}}</text></view>
+        <view class="detail-row"><text>地址</text><text>{{merchant.address}}</text></view>
+        <view class="detail-row"><text>营业时间</text><text>{{merchant.businessHours}}</text></view>
+      </view>
+
+      <view class="description-card surface">
+        <view class="description-title">简介</view>
+        <view class="description-text">{{merchant.description}}</view>
+      </view>
+
+      <view class="legal-tip">
+        平台仅作信息展示，不提供诊疗、售药、金融、派单或交易服务；涉及医疗、药品、开锁等资质类服务时，请联系主体核验证照后再决定是否使用。
+      </view>
+
+      <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        {{isFavorite ? '★ 已收藏' : '☆ 收藏商家'}}
+      </button>
+
+      <view class="action-row">
+        <button class="detail-action primary" bindtap="callPhone">拨打电话</button>
+        <button class="detail-action secondary" bindtap="copyWechat">复制微信</button>
+      </view>
+      <button class="report-button" bindtap="reportIssue">投诉/纠错</button>
+    </block>
+  </view>
+
+  <floating-tools
+    wx:if="{{merchant}}"
+    entry-type="merchant"
+    entry-id="{{merchant.id}}"
+    entry-title="{{merchant.name}}"
+  />
+  <bottom-nav active="merchant" />
+</view>

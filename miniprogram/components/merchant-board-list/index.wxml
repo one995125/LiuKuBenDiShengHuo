@@ -1,0 +1,67 @@
+<view class="app-body">
+  <app-header title="{{config.title}}" subtitle="{{config.subtitle}}" badge="{{config.badge}}" back />
+
+  <view class="app-main board-main">
+    <app-search
+      value="{{searchKeyword}}"
+      placeholder="{{config.searchPlaceholder}}"
+      bind:input="onSearchInput"
+      bind:confirm="onSearchConfirm"
+    />
+
+    <view class="section">
+      <view class="section-title">热门分类</view>
+      <view class="category-grid">
+        <view
+          wx:for="{{shortcuts}}"
+          wx:key="label"
+          class="category-item {{selectedLabel === item.label ? 'active' : ''}}"
+          data-label="{{item.label}}"
+          data-category="{{item.category}}"
+          data-sub-category="{{item.subCategory}}"
+          bindtap="onShortcutTap"
+        >{{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="qualification-note">{{config.qualificationNote}}</view>
+    <button class="submission-entry-button" bindtap="openSubmission">持照商家提交资料</button>
+
+    <view wx:if="{{loading}}" class="surface empty">正在读取已核验信息...</view>
+    <view wx:if="{{loadError}}" class="notice">云端暂不可用，已显示最近缓存或本地信息。</view>
+
+    <view class="section">
+      <view class="section-header">
+        <view class="result-heading">
+          <view class="section-title">{{hasSearched ? '搜索结果' : config.resultTitle}}</view>
+          <view wx:if="{{hasSearched}}" class="clear-search" bindtap="clearSearch">×</view>
+        </view>
+        <view class="section-more">{{merchants.length}}条已核验信息</view>
+      </view>
+      <view wx:if="{{!loading && merchants.length === 0}}" class="surface empty">
+        {{hasSearched ? '未找到相关信息，点击标题旁的 × 返回当前板块。' : config.emptyText}}
+      </view>
+      <view
+        wx:for="{{merchants}}"
+        wx:key="id"
+        class="merchant-row surface"
+        data-id="{{item.id}}"
+        bindtap="openDetail"
+      >
+        <view class="merchant-marker type-{{index % 3}}"></view>
+        <view class="merchant-main">
+          <view class="merchant-title-row">
+            <view class="merchant-title">{{item.name}}</view>
+            <view wx:if="{{item.isFavorite}}" class="collection-mark">★</view>
+            <view class="status-pill status-green">已核验</view>
+          </view>
+          <view class="merchant-desc">{{item.category}}{{item.subCategory ? ' · ' + item.subCategory : ''}}</view>
+          <view class="merchant-meta">{{item.businessHours}} · 更新于近期</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <floating-tools />
+  <bottom-nav active="{{activeNav}}" />
+</view>

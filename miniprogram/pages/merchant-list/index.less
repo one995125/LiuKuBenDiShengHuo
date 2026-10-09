@@ -1,0 +1,119 @@
+.list-main {
+  position: relative;
+  z-index: 4;
+  margin-top: 0;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14rpx;
+  margin-top: 15rpx;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 66rpx;
+  border: 1rpx solid #dfcfb2;
+  border-radius: 15rpx;
+  background: #fffaf0;
+  color: #53665f;
+  font-size: 23rpx;
+  box-sizing: border-box;
+}
+
+.category-item.active {
+  border-color: #123f36;
+  background: #123f36;
+  color: #fff9e9;
+  font-weight: 800;
+}
+
+.qualification-note {
+  margin-top: 18rpx;
+  padding: 17rpx 20rpx;
+  border-radius: 15rpx;
+  background: #fffaf0;
+  color: #7d704f;
+  font-size: 20rpx;
+  line-height: 1.55;
+}
+
+.submission-entry-button {
+  margin: 16rpx 0 6rpx;
+  border: 0;
+  border-radius: 16rpx;
+  background: #123f36;
+  color: #fff9e9;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.result-heading {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.clear-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36rpx;
+  height: 36rpx;
+  border: 1rpx solid #d6c8ae;
+  border-radius: 50%;
+  background: #fffaf0;
+  color: #8a7257;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.merchant-row {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 14rpx;
+  padding: 20rpx;
+}
+
+.merchant-marker {
+  width: 8rpx;
+  border-radius: 999rpx;
+  flex-shrink: 0;
+}
+
+.merchant-marker.type-0 { background: #34725f; }
+.merchant-marker.type-1 { background: #cf6e34; }
+.merchant-marker.type-2 { background: #78854b; }
+
+.merchant-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.merchant-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rpx;
+}
+
+.merchant-title {
+  overflow: hidden;
+  color: #173f37;
+  font-size: 27rpx;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.merchant-desc,
+.merchant-meta {
+  margin-top: 7rpx;
+  color: #718079;
+  font-size: 22rpx;
+}

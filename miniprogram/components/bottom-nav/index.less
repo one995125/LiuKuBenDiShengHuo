@@ -1,0 +1,141 @@
+.nav {
+  position: fixed;
+  z-index: 80;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 108rpx;
+  padding-top: 10rpx;
+  background: rgba(255, 252, 244, 0.98);
+  box-shadow: 0 -8rpx 24rpx rgba(57, 52, 39, 0.07);
+  box-sizing: content-box;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+  color: #60726c;
+  font-size: 22rpx;
+}
+
+.item.active {
+  color: #123f36;
+  font-weight: 800;
+}
+
+.nav-icon {
+  position: relative;
+  width: 34rpx;
+  height: 34rpx;
+  color: currentColor;
+  box-sizing: border-box;
+}
+
+.icon-home::before {
+  position: absolute;
+  top: 4rpx;
+  left: 8rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border-top: 4rpx solid currentColor;
+  border-left: 4rpx solid currentColor;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.icon-home::after {
+  position: absolute;
+  right: 7rpx;
+  bottom: 3rpx;
+  left: 7rpx;
+  height: 18rpx;
+  border: 4rpx solid currentColor;
+  border-top: 0;
+  border-radius: 2rpx;
+  content: "";
+  box-sizing: border-box;
+}
+
+.icon-shop::before {
+  position: absolute;
+  top: 7rpx;
+  left: 4rpx;
+  width: 26rpx;
+  height: 23rpx;
+  border: 4rpx solid currentColor;
+  border-radius: 3rpx;
+  content: "";
+  box-sizing: border-box;
+}
+
+.icon-shop::after {
+  position: absolute;
+  top: 2rpx;
+  left: 2rpx;
+  width: 30rpx;
+  height: 10rpx;
+  border: 4rpx solid currentColor;
+  border-radius: 6rpx 6rpx 3rpx 3rpx;
+  background: #fffdf5;
+  content: "";
+  box-sizing: border-box;
+}
+
+.icon-service::before {
+  position: absolute;
+  top: 3rpx;
+  left: 4rpx;
+  width: 26rpx;
+  height: 25rpx;
+  border: 4rpx solid currentColor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  content: "";
+  box-sizing: border-box;
+}
+
+.icon-service::after {
+  position: absolute;
+  right: 2rpx;
+  bottom: 5rpx;
+  width: 11rpx;
+  height: 8rpx;
+  border-right: 4rpx solid currentColor;
+  border-bottom: 4rpx solid currentColor;
+  border-radius: 0 0 6rpx 0;
+  content: "";
+}
+
+.icon-mine::before {
+  position: absolute;
+  top: 2rpx;
+  left: 10rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border: 4rpx solid currentColor;
+  border-radius: 50%;
+  content: "";
+  box-sizing: border-box;
+}
+
+.icon-mine::after {
+  position: absolute;
+  right: 4rpx;
+  bottom: 2rpx;
+  left: 4rpx;
+  height: 14rpx;
+  border: 4rpx solid currentColor;
+  border-bottom: 0;
+  border-radius: 18rpx 18rpx 0 0;
+  content: "";
+  box-sizing: border-box;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

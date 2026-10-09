@@ -1,0 +1,42 @@
+<view class="app-body">
+  <app-header title="招聘详情" subtitle="工作按需 · 联系信息自核实" badge="平台仅展示" back />
+
+  <view class="app-main detail-main">
+    <view wx:if="{{loading}}" class="surface empty">正在读取招聘详情...</view>
+    <view wx:elif="{{!job}}" class="surface empty">未找到招聘信息，可能已下架或过期</view>
+    <block wx:else>
+      <view wx:if="{{loadError}}" class="notice">云端暂不可用，当前展示缓存或本地信息。</view>
+      <view class="job-head surface">
+        <view class="job-title">{{job.title}}</view>
+        <view class="job-company">{{job.companyName}}</view>
+        <view class="status-pill status-green">已核验</view>
+        <view class="job-salary">{{job.salaryRange}}</view>
+        <view class="job-summary">地点：{{job.location}} · 人数：{{job.headcount}}</view>
+      </view>
+
+      <view class="detail-list">
+        <view class="detail-row"><text>工作时间</text><text>{{job.workingTime}}</text></view>
+        <view class="detail-row"><text>岗位要求</text><text>{{job.requirement}}</text></view>
+        <view class="detail-row"><text>联系方式</text><text class="strong">{{job.contact}}</text></view>
+        <view class="detail-row"><text>有效期</text><text>{{job.validUntil || '请电话确认'}}</text></view>
+      </view>
+
+      <view class="legal-tip">
+        平台仅作信息展示，不收简历、不承诺就业；联系前请自行核实公司、岗位和薪资信息。
+      </view>
+      <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        {{isFavorite ? '★ 已收藏' : '☆ 收藏招聘'}}
+      </button>
+      <button class="contact-button" bindtap="callPhone">拨打电话联系</button>
+      <button class="text-action" bindtap="reportIssue">投诉 / 纠错</button>
+    </block>
+  </view>
+
+  <floating-tools
+    wx:if="{{job}}"
+    entry-type="job"
+    entry-id="{{job.id}}"
+    entry-title="{{job.title}}"
+  />
+  <bottom-nav />
+</view>

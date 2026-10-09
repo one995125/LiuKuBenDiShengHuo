@@ -1,0 +1,36 @@
+{
+  "name": "miniprogram-ts-less-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "check:type": "tsc --noEmit",
+    "check:appid": "node tools/check-appid-config.js",
+    "check:miniprogram": "node tools/wechat-quality-check.js . --type miniprogram",
+    "check:cloud": "node tools/check-cloud-stage2.js",
+    "generate:cloud-seeds": "node tools/generate-cloud-seeds.js",
+    "test:public-query": "node tools/test-public-query-utils.js",
+    "test:user-cloud": "node tools/test-user-cloud-utils.js",
+    "test:user-scope": "node tools/test-user-scope-utils.js",
+    "test:user-isolation": "node tools/test-user-isolation.js",
+    "check:user-cloud-remote": "node tools/check-user-cloud-remote.js",
+    "test:admin-cloud": "node tools/test-admin-cloud-utils.js",
+    "test:maintenance": "node tools/test-maintenance-utils.js",
+    "test:merchant-taxonomy": "node tools/test-merchant-category-migration.js",
+    "check:user-cloud": "node tools/check-user-cloud-stage4.js",
+    "check:baseline": "npm run check:type && npm run check:appid && npm run check:miniprogram && node tools/pre-cloud-baseline.js && npm run check:cloud && npm run test:public-query && npm run test:user-cloud && npm run test:user-scope && npm run test:user-isolation && npm run check:user-cloud",
+    "check:admin-web": "npm --prefix admin-web run test && npm --prefix admin-web run build",
+    "check:full": "npm run check:baseline && npm run test:admin-cloud && npm run test:maintenance && npm run test:merchant-taxonomy && npm run check:admin-web",
+    "test:smoke": "node tools/miniprogram-smoke-test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "tdesign-miniprogram": "^1.10.1"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^2.8.3-1",
+    "miniprogram-automator": "^0.12.1",
+    "typescript": "^6.0.3"
+  }
+}

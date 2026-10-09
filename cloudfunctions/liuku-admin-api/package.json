@@ -1,0 +1,13 @@
+{
+  "name": "liuku-admin-api",
+  "version": "1.0.0",
+  "description": "六库生活圈运营管理云函数入口",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@cloudbase/node-sdk": "^3.18.1",
+    "wx-server-sdk": "~2.6.3"
+  }
+}

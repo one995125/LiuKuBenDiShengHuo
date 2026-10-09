@@ -1,0 +1,97 @@
+.header {
+  position: relative;
+  overflow: hidden;
+  min-height: 204rpx;
+  background: #f6eddb;
+  box-sizing: border-box;
+}
+
+.header-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx;
+}
+
+.title-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.title-group.with-back {
+  margin-left: 58rpx;
+}
+
+.title {
+  overflow: hidden;
+  color: #123f36;
+  font-size: 42rpx;
+  font-weight: 900;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle {
+  margin-top: 7rpx;
+  overflow: hidden;
+  color: #688178;
+  font-size: 23rpx;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge {
+  margin-left: auto;
+  padding: 11rpx 22rpx;
+  border-radius: 999rpx;
+  background: #cf6e34;
+  color: #fff8e8;
+  font-size: 23rpx;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.back-button {
+  position: absolute;
+  left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  color: #123f36;
+}
+
+.back-icon {
+  width: 22rpx;
+  height: 22rpx;
+  border-bottom: 4rpx solid currentColor;
+  border-left: 4rpx solid currentColor;
+  transform: rotate(45deg);
+}
+
+.curve {
+  position: absolute;
+  border: 3rpx solid;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.curve-green {
+  left: -88rpx;
+  bottom: -74rpx;
+  width: 440rpx;
+  height: 238rpx;
+  border-color: #8eaea1;
+}
+
+.curve-orange {
+  right: -95rpx;
+  top: -38rpx;
+  width: 260rpx;
+  height: 240rpx;
+  border-color: #ce6d35;
+}

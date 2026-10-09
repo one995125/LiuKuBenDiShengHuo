@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "app-header": "/components/app-header/index",
+    "app-search": "/components/app-search/index",
+    "bottom-nav": "/components/bottom-nav/index",
+    "floating-tools": "/components/floating-tools/index"
+  }
+}

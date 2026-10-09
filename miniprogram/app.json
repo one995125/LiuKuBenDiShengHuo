@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/merchant-list/index",
+    "pages/merchant-detail/index",
+    "pages/rental-list/index",
+    "pages/rental-detail/index",
+    "pages/submit-entry/index",
+    "pages/my-submissions/index",
+    "pages/offer-detail/index",
+    "pages/mine/index",
+    "pages/repair-list/index",
+    "pages/shopping-list/index",
+    "pages/feedback/index",
+    "pages/user-agreement/index",
+    "pages/admin/index"
+  ],
+  "usingComponents": {
+    "app-header": "/components/app-header/index",
+    "app-search": "/components/app-search/index",
+    "bottom-nav": "/components/bottom-nav/index",
+    "floating-tools": "/components/floating-tools/index"
+  },
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "__usePrivacyCheck__": true
+}

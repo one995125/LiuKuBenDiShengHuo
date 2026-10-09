@@ -1,0 +1,48 @@
+<view class="app-body">
+  <app-header title="租房详情" subtitle="安心租房 · 用户自行核实" badge="平台仅展示" back />
+
+  <view class="app-main detail-main">
+    <view wx:if="{{loading}}" class="surface empty">正在读取房源详情...</view>
+    <view wx:elif="{{!rental}}" class="surface empty">未找到房源信息，可能已下架或过期</view>
+    <block wx:else>
+      <view wx:if="{{loadError}}" class="notice">云端暂不可用，当前展示缓存或本地信息。</view>
+      <image wx:if="{{rental.images.length}}" class="house-image" src="{{rental.images[0]}}" mode="aspectFill" />
+      <view wx:else class="house-placeholder">房源图片占位</view>
+
+      <view class="rental-heading">
+        <view class="rental-title">{{rental.title}}</view>
+        <view class="rental-price">{{rental.rent}}</view>
+      </view>
+
+      <view class="detail-list">
+        <view class="detail-row"><text>位置</text><text>{{rental.location}}</text></view>
+        <view class="detail-row"><text>户型</text><text>{{rental.layout}} · {{rental.area || '面积请电话确认'}}</text></view>
+        <view class="detail-row"><text>联系方式</text><text class="strong">{{rental.contact}}</text></view>
+        <view class="detail-row"><text>有效期</text><text>{{rental.validUntil || '请电话确认'}}</text></view>
+      </view>
+
+      <view class="description-card surface">
+        <view class="description-title">说明</view>
+        <view class="description-text">{{rental.description}}</view>
+      </view>
+
+      <view class="legal-tip">平台仅作信息展示，不参与中介撮合；请实地核验房源、权属和合同。</view>
+      <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        {{isFavorite ? '★ 已收藏' : '☆ 收藏房源'}}
+      </button>
+      <view class="action-row">
+        <button class="detail-action primary" bindtap="callPhone">拨打电话</button>
+        <button class="detail-action secondary" bindtap="copyContact">复制联系</button>
+      </view>
+      <button class="text-action" bindtap="reportIssue">投诉 / 纠错</button>
+    </block>
+  </view>
+
+  <floating-tools
+    wx:if="{{rental}}"
+    entry-type="rental"
+    entry-id="{{rental.id}}"
+    entry-title="{{rental.title}}"
+  />
+  <bottom-nav />
+</view>

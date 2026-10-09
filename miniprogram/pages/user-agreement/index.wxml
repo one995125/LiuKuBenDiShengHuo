@@ -1,0 +1,31 @@
+<view class="app-body">
+  <app-header title="用户服务协议" subtitle="信息浏览与反馈规则" back />
+
+  <view class="app-main agreement-main">
+    <view class="agreement-card surface">
+      <view class="agreement-updated">更新日期：2026年7月22日</view>
+
+      <view class="agreement-title">一、服务说明</view>
+      <view class="agreement-paragraph">六库生活圈提供本地商家黄页、出租房源浏览、受控资料投稿以及私密纠错投诉服务。商家和房源投稿必须经人工核验后才会公开；平台不提供在线交易、支付、招聘服务、简历投递、房屋中介撮合或就业承诺。</view>
+
+      <view class="agreement-title">二、信息维护规则</view>
+      <view class="agreement-paragraph">持照商家可以提交本商家资料；出租房源只接受业主本人或备案中介提交。投稿人须保证标题、内容、联系人、联系电话和图片真实、合法并已取得必要授权；所有投稿进入后台人工审核，通过后才生成公开内容。被拒绝后应根据原因重新提交新记录。</view>
+
+      <view class="agreement-title">三、纠错与投诉</view>
+      <view class="agreement-paragraph">用户可以私密提交信息纠错或投诉说明，并可自愿填写手机号或微信号，便于运营者核实。反馈内容和联系方式仅进入运营后台人工处理，不会公开展示，也不会用于画像广告、自动营销、出售或无关用途。</view>
+
+      <view class="agreement-title">四、核验材料与招聘频道</view>
+      <view class="agreement-paragraph">营业执照、经营场所、房屋出租权、备案信息和授权关系等材料仅供管理员核验，不会进入公开接口。材料可遮挡非核验所需号码，但主体、地址、授权关系和有效印章须可辨认。招聘频道暂未开放，任何用户和管理员均不能发布招聘信息。</view>
+
+      <view class="agreement-title">五、用户权利</view>
+      <view class="agreement-paragraph">用户可以通过“纠错与投诉”或客服联系运营者，申请核实、更正或下架不准确的信息。用户联系信息主体前，应自行核实信息真实性和主体资质。</view>
+
+      <view class="agreement-title">六、本机收藏与浏览足迹</view>
+      <view class="agreement-paragraph">用户主动收藏公开信息或打开公开详情时，小程序会在当前设备保存收藏摘要和浏览足迹，用于在“我的”页面快速查看。上述记录不会上传至云端，不与头像昵称资料同步，可由用户随时单条移除或全部清空；清理微信缓存或卸载小程序后可能丢失。</view>
+
+      <view class="agreement-title">七、隐私保护</view>
+      <view class="agreement-paragraph">用户可主动选择头像并填写昵称，但头像昵称不是投稿门槛或资质证明。联系人姓名和电话用于人工回拨核验；公开图片和联系方式在确认授权后用于黄页或房源展示；私密核验材料仅管理员可访问。拒绝投稿满一年，或已发布内容下架、删除满一年后，系统删除核验原文件，仅保留不含证件号码和原图的审核日志。具体处理范围请查看微信提供的《用户隐私保护指引》。</view>
+      <button class="privacy-contract-button" bindtap="openPrivacyPolicy">查看用户隐私保护指引</button>
+    </view>
+  </view>
+</view>

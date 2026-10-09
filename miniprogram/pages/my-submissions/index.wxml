@@ -1,0 +1,31 @@
+<view class="app-body">
+  <app-header title="我的投稿" subtitle="商家和房源均需人工审核后才会公示" back />
+  <view class="app-main submissions-main">
+    <view wx:if="{{loading}}" class="surface empty">正在读取投稿记录...</view>
+    <view wx:if="{{error}}" class="notice">读取结果可能不是最新：{{error}}</view>
+
+    <view wx:if="{{pending.length}}" class="section">
+      <view class="section-title">待重新提交</view>
+      <view wx:for="{{pending}}" wx:key="id" class="submission-card surface">
+        <view class="card-top"><view class="card-title">{{item.typeLabel}} · {{item.title}}</view><view class="status waiting">待重试</view></view>
+        <view class="card-meta">{{item.updatedAt}} · 已尝试 {{item.attempts}} 次</view>
+        <view wx:if="{{item.lastError}}" class="reject-reason">{{item.lastError}}</view>
+        <button class="retry-button" data-id="{{item.id}}" loading="{{retryingId === item.id}}" bindtap="retry">重新提交</button>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">审核记录</view>
+      <view wx:if="{{!loading && items.length === 0}}" class="surface empty">暂无投稿记录</view>
+      <view wx:for="{{items}}" wx:key="id" class="submission-card surface">
+        <view class="card-top">
+          <view class="card-title">{{item.typeLabel}} · {{item.title}}</view>
+          <view class="status status-{{item.status}}">{{item.statusLabel}}</view>
+        </view>
+        <view class="card-meta">更新于 {{item.updatedAt}}</view>
+        <view wx:if="{{item.rejectReason}}" class="reject-reason">拒绝原因：{{item.rejectReason}}</view>
+        <button wx:if="{{item.status === 'published' && item.publishedEntryId}}" class="view-button" data-type="{{item.type}}" data-id="{{item.publishedEntryId}}" bindtap="openPublished">查看已公示内容</button>
+      </view>
+    </view>
+  </view>
+</view>

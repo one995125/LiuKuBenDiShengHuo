@@ -1,0 +1,40 @@
+<view wx:if="{{visible}}" class="profile-mask" bindtap="onMaskTap">
+  <view class="profile-panel" catchtap="stopPropagation">
+    <view class="profile-title">编辑头像和昵称</view>
+    <view class="profile-desc">头像和昵称由你主动选择，仅用于个人资料展示和账号识别，不会自动获取微信号。</view>
+
+    <view wx:if="{{privacyChecking}}" class="privacy-state">正在检查隐私授权...</view>
+    <view wx:elif="{{!privacyReady}}" class="privacy-state">
+      <view>使用头像和昵称前，请先阅读并同意{{privacyContractName}}。</view>
+      <button
+        class="privacy-button"
+        open-type="agreePrivacyAuthorization"
+        bindagreeprivacyauthorization="onPrivacyAuthorized"
+      >同意并继续</button>
+    </view>
+
+    <block wx:else>
+      <button class="avatar-button" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image wx:if="{{avatarPath}}" class="avatar-image" src="{{avatarPath}}" mode="aspectFill" />
+        <view wx:else class="avatar-placeholder">选择头像</view>
+      </button>
+
+      <view class="field-label">昵称</view>
+      <input
+        class="nickname-input"
+        type="nickname"
+        value="{{nickname}}"
+        maxlength="24"
+        placeholder="请输入昵称"
+        bindinput="onNicknameInput"
+      />
+      <view wx:if="{{formError}}" class="form-error">{{formError}}</view>
+      <view class="profile-tip">不影响浏览、收藏、足迹和纠错；可随时再次修改。</view>
+
+      <view class="profile-actions">
+        <button class="action-button secondary" disabled="{{saving}}" bindtap="cancel">取消</button>
+        <button class="action-button primary" loading="{{saving}}" disabled="{{saving}}" bindtap="saveProfile">保存资料</button>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+{
+  "appId": "wxd770418febdac99e",
+  "cloud": {
+    "environmentId": "cloud1-d6glqc7e7244211f2",
+    "sourceAppIdEnvVar": "LIUKU_ALLOWED_APP_ID",
+    "functionNames": {
+      "publicApi": "liuku-public-api",
+      "userApi": "liuku-user-api",
+      "adminApi": "liuku-admin-api",
+      "maintenance": "liuku-maintenance"
+    }
+  }
+}

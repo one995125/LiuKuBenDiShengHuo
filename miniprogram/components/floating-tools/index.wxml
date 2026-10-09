@@ -1,0 +1,4 @@
+<view class="tools">
+  <view class="tool customer" bindtap="openCustomer">客</view>
+  <view class="tool feedback" bindtap="openFeedback">纠</view>
+</view>

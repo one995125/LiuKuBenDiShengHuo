@@ -1,0 +1,194 @@
+<view class="app-body">
+  <app-header
+    title="我的"
+    subtitle="本机收藏、浏览足迹与使用帮助"
+    back="{{true}}"
+    intercept-back="{{true}}"
+    bind:back="onHeaderBack"
+  />
+
+  <view class="app-main mine-main">
+    <view class="profile-card">
+      <image
+        wx:if="{{profile.avatarUrl || profile.avatarFileId}}"
+        class="profile-avatar"
+        src="{{profile.avatarUrl || profile.avatarFileId}}"
+        mode="aspectFill"
+      />
+      <view wx:else class="profile-avatar profile-avatar-empty">我</view>
+      <view class="profile-copy">
+        <view class="profile-name">{{profile.nickname || '六库用户'}}</view>
+        <view wx:if="{{profileLoading}}" class="profile-status">正在读取资料...</view>
+        <view wx:elif="{{profileError}}" class="profile-status profile-status-error" bindtap="loadProfile">读取失败，点击重试</view>
+        <view wx:else class="profile-status">{{profile.hasProfile ? '头像昵称已完善' : '可主动完善头像和昵称'}}</view>
+      </view>
+      <button class="profile-edit" disabled="{{profileLoading}}" bindtap="openProfileEditor">{{profile.hasProfile ? '编辑资料' : '完善资料'}}</button>
+    </view>
+
+    <view class="collection-summary">
+      <view class="summary-item">
+        <view class="summary-number">{{favoriteCount}}</view>
+        <view class="summary-label">我的收藏</view>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <view class="summary-number">{{historyCount}}</view>
+        <view class="summary-label">最近浏览</view>
+      </view>
+    </view>
+    <view class="local-notice">收藏和足迹仅保存在当前设备，可随时删除，不会同步至云端。</view>
+
+    <view class="collection-tabs">
+      <view
+        class="collection-tab {{activeCollection === 'favorites' ? 'active' : ''}}"
+        data-value="favorites"
+        bindtap="switchCollection"
+      >我的收藏</view>
+      <view
+        class="collection-tab {{activeCollection === 'history' ? 'active' : ''}}"
+        data-value="history"
+        bindtap="switchCollection"
+      >浏览足迹</view>
+    </view>
+
+    <scroll-view class="filter-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="filter-row">
+        <view
+          wx:for="{{collectionFilters}}"
+          wx:key="value"
+          class="filter-pill {{selectedType === item.value ? 'active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="selectCollectionType"
+        >{{item.label}}</view>
+      </view>
+    </scroll-view>
+
+    <view class="collection-heading">
+      <view class="section-title">{{activeCollection === 'favorites' ? '收藏内容' : '最近看过'}}</view>
+      <view
+        wx:if="{{(activeCollection === 'favorites' ? favoriteCount : historyCount) > 0}}"
+        class="clear-action"
+        bindtap="clearCurrentCollection"
+      >清空</view>
+    </view>
+
+    <view wx:if="{{visibleItems.length === 0}}" class="surface collection-empty">
+      <view class="empty-symbol">{{activeCollection === 'favorites' ? '☆' : '时'}}</view>
+      <view class="empty-title">{{activeCollection === 'favorites' ? '暂时没有收藏' : '暂时没有浏览足迹'}}</view>
+      <view class="empty-desc">{{selectedType === 'all' ? '打开公开信息详情即可开始使用。' : '当前分类暂无记录，可切换到“全部”查看。'}}</view>
+    </view>
+
+    <view
+      wx:for="{{visibleItems}}"
+      wx:key="key"
+      class="collection-card surface"
+      data-type="{{item.type}}"
+      data-id="{{item.id}}"
+      bindtap="openCollectionItem"
+    >
+      <image wx:if="{{item.image}}" class="collection-image" src="{{item.image}}" mode="aspectFill" />
+      <view wx:else class="collection-placeholder type-{{item.type}}">{{item.symbol}}</view>
+      <view class="collection-content">
+        <view class="collection-title-line">
+          <view class="collection-title">{{item.title}}</view>
+          <view class="collection-type">{{item.typeLabel}}</view>
+        </view>
+        <view class="collection-subtitle">{{item.subtitle || '运营者已核验公开信息'}}</view>
+        <view class="collection-time">{{activeCollection === 'favorites' ? '收藏于 ' : '浏览于 '}}{{item.timeLabel}}</view>
+      </view>
+      <button
+        wx:if="{{activeCollection === 'favorites'}}"
+        class="remove-button"
+        data-type="{{item.type}}"
+        data-id="{{item.id}}"
+        catchtap="removeFavorite"
+      >移除</button>
+      <view wx:else class="collection-arrow">›</view>
+    </view>
+
+    <view class="operator-card">
+      <view class="operator-mark">营</view>
+      <view class="operator-main">
+        <view class="operator-title">商家和房源经人工核验后公示</view>
+        <view class="operator-desc">招聘频道暂未开放；投稿核验材料不会公开展示。</view>
+      </view>
+    </view>
+
+    <view class="section-header">
+      <view class="section-title">联系与反馈</view>
+    </view>
+    <view class="help-list surface">
+      <view class="help-row" bindtap="openMySubmissions">
+        <view>
+          <view class="help-title">我的投稿</view>
+          <view class="help-desc">查看商家、房源投稿的审核状态和拒绝原因</view>
+        </view>
+        <view class="help-arrow">›</view>
+      </view>
+      <view class="help-row" bindtap="contactService">
+        <view>
+          <view class="help-title">联系客服</view>
+          <view class="help-desc">咨询信息、商家合作或其他使用问题</view>
+        </view>
+        <view class="help-arrow">›</view>
+      </view>
+      <view class="help-row" bindtap="openFeedback">
+        <view>
+          <view class="help-title">提交纠错 / 投诉</view>
+          <view class="help-desc">内容仅进入运营后台人工处理，不公开展示</view>
+        </view>
+        <view class="help-arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{pendingLoading}}" class="surface pending-empty">正在检查待重试反馈...</view>
+    <view wx:if="{{pendingError}}" class="pending-notice">暂时无法读取本账号反馈草稿：{{pendingError}}</view>
+    <view wx:if="{{pendingFeedbacks.length > 0}}" class="pending-section">
+      <view class="section-header"><view class="section-title">待重试反馈</view></view>
+      <view wx:for="{{pendingFeedbacks}}" wx:key="id" class="pending-card surface">
+        <view class="pending-topline">
+          <view class="pending-title">{{item.typeLabel}} · {{item.title}}</view>
+          <view class="status-pill status-warning">待重试</view>
+        </view>
+        <view class="pending-meta">保存于 {{item.updatedAt}} · 已尝试 {{item.attempts}} 次</view>
+        <view wx:if="{{item.lastError}}" class="pending-error">{{item.lastError}}</view>
+        <button
+          class="retry-button"
+          data-id="{{item.id}}"
+          loading="{{retryingId === item.id}}"
+          disabled="{{retryingId && retryingId !== item.id}}"
+          bindtap="retryPendingFeedback"
+        >重新提交</button>
+      </view>
+    </view>
+
+    <view class="section-header"><view class="section-title">规则与隐私</view></view>
+    <view class="help-list surface">
+      <view class="help-row" bindtap="openUserAgreement">
+        <view>
+          <view class="help-title">用户服务协议</view>
+          <view class="help-desc">了解信息展示、本机记录和反馈处理规则</view>
+        </view>
+        <view class="help-arrow">›</view>
+      </view>
+      <view class="help-row" bindtap="openPrivacyPolicy">
+        <view>
+          <view class="help-title">用户隐私保护指引</view>
+          <view class="help-desc">查看微信公众平台登记的处理范围</view>
+        </view>
+        <view class="help-arrow">›</view>
+      </view>
+    </view>
+
+    <view class="version-entry" bindlongpress="openAdminByLongPress">六库生活圈 · 运营维护版</view>
+  </view>
+
+  <user-profile-editor
+    visible="{{profileEditorVisible}}"
+    profile="{{profile}}"
+    bindsaved="onProfileSaved"
+    bindcancel="closeProfileEditor"
+  />
+
+  <bottom-nav active="mine" />
+</view>

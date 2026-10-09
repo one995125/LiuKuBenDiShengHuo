@@ -1,0 +1,22 @@
+<view class="app-body">
+  <app-header title="运营说明" subtitle="公开内容由独立后台统一维护" back />
+
+  <view class="app-main admin-main">
+    <view class="operator-card surface">
+      <view class="operator-badge">运营者专用</view>
+      <view class="operator-title">小程序内不提供内容发布和审核</view>
+      <view class="operator-desc">
+        商家、招聘、房源和优惠信息均由运营者登录独立管理后台录入、核验、发布或下架。历史用户投稿和评论已封存，不在本页展示。
+      </view>
+    </view>
+
+    <view class="boundary-card surface">
+      <view class="boundary-title">当前运营边界</view>
+      <view class="boundary-row">公开内容：仅运营后台维护</view>
+      <view class="boundary-row">用户反馈：仅后台人工处理，不公开展示</view>
+      <view class="boundary-row">用户发布与公开评论：已停止</view>
+    </view>
+
+    <button class="home-button" bindtap="goHome">返回首页</button>
+  </view>
+</view>

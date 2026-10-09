@@ -1,0 +1,181 @@
+[
+  {
+    "isTop": true,
+    "topUntil": "2026-06-30",
+    "isFeatured": true,
+    "featuredUntil": "2026-06-15",
+    "_id": "merchant-001",
+    "id": "merchant-001",
+    "type": "merchant",
+    "status": "published",
+    "name": "六库阿丽小吃",
+    "category": "餐饮美食",
+    "subCategory": "小吃快餐",
+    "phone": "13900001111",
+    "phones": [
+      "13900001111"
+    ],
+    "phonesSearch": "13900001111",
+    "wechat": "liuku-food",
+    "address": "六库人民路便民市场旁",
+    "businessHours": "08:00-21:30",
+    "description": "本地家常小吃，支持电话预订，适合附近居民日常用餐。",
+    "images": [],
+    "tags": [
+      "本地老店",
+      "可预订",
+      "堂食"
+    ],
+    "createdAt": "2026-05-01 09:00",
+    "updatedAt": "2026-05-20 16:30"
+  },
+  {
+    "isTop": false,
+    "topUntil": "",
+    "isFeatured": true,
+    "featuredUntil": "2026-06-08",
+    "_id": "merchant-002",
+    "id": "merchant-002",
+    "type": "merchant",
+    "status": "published",
+    "name": "老张水电维修",
+    "category": "生活服务",
+    "subCategory": "水电维修",
+    "phone": "13800002222",
+    "phones": [
+      "13800002222"
+    ],
+    "phonesSearch": "13800002222",
+    "wechat": "liuku-fix",
+    "address": "六库城区可上门",
+    "businessHours": "09:00-22:00",
+    "description": "提供水管、灯具、插座、热水器基础维修，建议提前电话确认上门时间。",
+    "images": [],
+    "tags": [
+      "上门服务",
+      "修水电",
+      "便民"
+    ],
+    "createdAt": "2026-05-03 10:00",
+    "updatedAt": "2026-05-21 11:20"
+  },
+  {
+    "isTop": false,
+    "topUntil": "",
+    "isFeatured": false,
+    "featuredUntil": "",
+    "_id": "merchant-003",
+    "id": "merchant-003",
+    "type": "merchant",
+    "status": "published",
+    "name": "六库快捷洗车",
+    "category": "车辆服务",
+    "subCategory": "洗车美容",
+    "phone": "13700003333",
+    "phones": [
+      "13700003333"
+    ],
+    "phonesSearch": "13700003333",
+    "wechat": "",
+    "address": "六库桥头停车场内",
+    "businessHours": "08:30-19:00",
+    "description": "日常洗车、内饰清洁、简易打蜡，节假日前建议电话排队。",
+    "images": [],
+    "tags": [
+      "洗车",
+      "停车方便"
+    ],
+    "createdAt": "2026-05-07 12:00",
+    "updatedAt": "2026-05-19 14:10"
+  },
+  {
+    "isTop": false,
+    "topUntil": "",
+    "isFeatured": false,
+    "featuredUntil": "",
+    "_id": "merchant-004",
+    "id": "merchant-004",
+    "type": "merchant",
+    "status": "published",
+    "name": "王师傅开锁换锁",
+    "category": "生活服务",
+    "subCategory": "开锁换锁",
+    "phone": "13976552210",
+    "phones": [
+      "13976552210"
+    ],
+    "phonesSearch": "13976552210",
+    "wechat": "",
+    "address": "六库城区可上门",
+    "businessHours": "24 小时电话联系",
+    "description": "提供开锁、换锁和锁具检查服务，上门前请准备有效身份证明。",
+    "images": [],
+    "tags": [
+      "开锁",
+      "24小时",
+      "电话联系"
+    ],
+    "createdAt": "2026-05-08 09:00",
+    "updatedAt": "2026-06-02 08:30"
+  },
+  {
+    "isTop": false,
+    "topUntil": "",
+    "isFeatured": false,
+    "featuredUntil": "",
+    "_id": "merchant-005",
+    "id": "merchant-005",
+    "type": "merchant",
+    "status": "published",
+    "name": "江东家政服务",
+    "category": "生活服务",
+    "subCategory": "家政保洁",
+    "phone": "18008863567",
+    "phones": [
+      "18008863567"
+    ],
+    "phonesSearch": "18008863567",
+    "wechat": "",
+    "address": "六库城区可预约",
+    "businessHours": "08:30-20:00",
+    "description": "提供日常保洁、搬家整理和家电基础清洁服务。",
+    "images": [],
+    "tags": [
+      "家政",
+      "可预约",
+      "每周服务"
+    ],
+    "createdAt": "2026-05-09 09:00",
+    "updatedAt": "2026-06-01 11:00"
+  },
+  {
+    "isTop": false,
+    "topUntil": "",
+    "isFeatured": false,
+    "featuredUntil": "",
+    "_id": "merchant-006",
+    "id": "merchant-006",
+    "type": "merchant",
+    "status": "published",
+    "name": "顺达疏通服务",
+    "category": "生活服务",
+    "subCategory": "水电维修",
+    "phone": "13987652210",
+    "phones": [
+      "13987652210"
+    ],
+    "phonesSearch": "13987652210",
+    "wechat": "",
+    "address": "六库城区可电话咨询",
+    "businessHours": "08:00-22:00",
+    "description": "提供下水道疏通、管道检查和基础维修。",
+    "images": [],
+    "tags": [
+      "疏通",
+      "可电话咨询",
+      "上门服务"
+    ],
+    "createdAt": "2026-05-10 09:00",
+    "updatedAt": "2026-05-31 18:00"
+  }
+]

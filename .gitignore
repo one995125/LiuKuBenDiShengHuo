@@ -1,0 +1,9 @@
+node_modules
+miniprogram/miniprogram_npm
+.artifacts
+admin-web/dist
+admin-web/test-results
+admin-web/playwright-report
+admin-web/vite.config.js
+admin-web/vite.config.d.ts
+admin-web/*.tsbuildinfo

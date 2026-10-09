@@ -1,0 +1,53 @@
+<view class="app-body">
+  <app-header title="优惠活动" subtitle="优惠信息 · 联系商家前请核实" badge="限时活动" back />
+
+  <view class="app-main offer-main">
+    <view wx:if="{{loading}}" class="surface empty">正在读取活动详情...</view>
+    <view wx:elif="{{!offer}}" class="surface empty">未找到活动信息，可能尚未开始、已结束或已下架</view>
+    <block wx:else>
+      <view wx:if="{{loadError}}" class="notice">云端暂不可用，当前展示缓存或本地信息。</view>
+      <image wx:if="{{offer.images.length}}" class="offer-cover" src="{{offer.images[0]}}" mode="aspectFill" />
+      <view wx:else class="offer-placeholder">
+        <view class="offer-symbol">惠</view>
+        <view>本地优惠活动</view>
+      </view>
+
+      <view class="offer-heading">
+        <view class="status-pill status-yellow">优惠</view>
+        <view class="offer-title">{{offer.title}}</view>
+        <view class="offer-merchant">{{offer.merchantName}}</view>
+      </view>
+
+      <view class="detail-list">
+        <view class="detail-row"><text>活动时间</text><text>{{offer.validFrom || '即日起'}} 至 {{offer.validUntil || '结束时间请咨询'}}</text></view>
+        <view class="detail-row"><text>联系电话</text><text>{{offer.phone || '暂未提供'}}</text></view>
+        <view class="detail-row"><text>微信号</text><text>{{offer.wechat || '暂未提供'}}</text></view>
+      </view>
+
+      <view class="description-card surface">
+        <view class="description-title">活动说明</view>
+        <view class="description-summary">{{offer.summary}}</view>
+        <view class="description-text">{{offer.description}}</view>
+      </view>
+
+      <view class="legal-tip">优惠信息由发布者提供，平台仅作展示；参与前请向商家核实价格、数量、适用范围和有效期。</view>
+      <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+        {{isFavorite ? '★ 已收藏' : '☆ 收藏优惠'}}
+      </button>
+      <view class="action-row">
+        <button class="detail-action primary" bindtap="callPhone">拨打电话</button>
+        <button class="detail-action secondary" bindtap="copyWechat">复制微信</button>
+      </view>
+      <button wx:if="{{offer.merchantId}}" class="merchant-button" bindtap="openMerchant">查看商家信息</button>
+      <button class="text-action" bindtap="reportIssue">投诉 / 纠错</button>
+    </block>
+  </view>
+
+  <floating-tools
+    wx:if="{{offer}}"
+    entry-type="offer"
+    entry-id="{{offer.id}}"
+    entry-title="{{offer.title}}"
+  />
+  <bottom-nav />
+</view>

@@ -1,0 +1,42 @@
+<view class="app-body">
+  <app-header title="纠错与投诉" subtitle="帮助我们保持本地信息准确" badge="人工处理" back />
+
+  <view class="app-main feedback-main">
+    <view wx:if="{{entryTitle}}" class="target-card surface">
+      <view class="target-label">关联信息</view>
+      <view class="target-title">{{entryTitle}}</view>
+    </view>
+
+    <view class="feedback-label">反馈类型</view>
+    <view class="feedback-types">
+      <view class="feedback-type {{type === 'correction' ? 'active' : ''}}" data-type="correction" bindtap="selectType">信息纠错</view>
+      <view class="feedback-type {{type === 'complaint' ? 'active' : ''}}" data-type="complaint" bindtap="selectType">投诉举报</view>
+    </view>
+
+    <view class="feedback-label">说明</view>
+    <textarea
+      class="feedback-textarea"
+      value="{{content}}"
+      data-field="content"
+      placeholder="请说明需要修改的内容或投诉原因"
+      maxlength="500"
+      bindinput="onFieldInput"
+    />
+
+    <view class="feedback-label">联系方式 <text>选填</text></view>
+    <input
+      class="feedback-input"
+      value="{{contact}}"
+      data-field="contact"
+      placeholder="手机号或微信，便于运营者核实"
+      bindinput="onFieldInput"
+    />
+
+    <view class="feedback-note">
+      请勿提交违法、低俗或侵权内容。联系方式仅用于核实反馈，不公开展示。
+    </view>
+    <button class="feedback-submit" loading="{{submitting}}" bindtap="submit">提交反馈</button>
+  </view>
+
+  <bottom-nav />
+</view>

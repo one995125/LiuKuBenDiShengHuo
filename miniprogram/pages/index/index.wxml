@@ -1,0 +1,115 @@
+<view class="app-body">
+  <app-header
+    title="六库生活圈"
+    subtitle="沿着生活线索，快速找到本地信息"
+    badge="信息已核验"
+  />
+
+  <view class="app-main home-main">
+    <app-search
+      value="{{searchKeyword}}"
+      placeholder="搜索商家、电话、租房"
+      bind:input="onSearchInput"
+      bind:confirm="onSearchConfirm"
+    />
+
+    <view class="quick-grid">
+      <view class="quick-card green" bindtap="goMerchantList">
+        <view class="quick-symbol">店</view>
+        <view class="quick-title">商家电话</view>
+        <view class="quick-desc">电话地址</view>
+      </view>
+      <view class="quick-card olive" bindtap="goRentalList">
+        <view class="quick-symbol">房</view>
+        <view class="quick-title">房屋出租</view>
+        <view class="quick-desc">安全租房</view>
+      </view>
+      <view class="quick-card yellow" bindtap="goRepairList">
+        <view class="quick-symbol">修</view>
+        <view class="quick-title">上门服务</view>
+        <view class="quick-desc">维修开锁</view>
+      </view>
+      <view class="quick-card orange" bindtap="goConvenienceStoreList">
+        <view class="quick-symbol">购</view>
+        <view class="quick-title">超市便利</view>
+        <view class="quick-desc">日用百货</view>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="surface empty">正在读取本地信息...</view>
+    <view wx:if="{{loadError}}" class="notice">
+      云端暂不可用，已显示最近缓存或本地信息。
+    </view>
+
+    <view wx:if="{{hasSearched}}" class="section">
+      <view class="section-header">
+        <view class="section-title">搜索结果</view>
+        <view class="section-more" bindtap="clearSearch">清空</view>
+      </view>
+      <view wx:if="{{!loading && searchResults.length === 0}}" class="surface empty">暂未找到相关信息。</view>
+      <view
+        wx:for="{{searchResults}}"
+        wx:key="id"
+        class="recommend-card surface"
+        data-id="{{item.id}}"
+        data-type="{{item.type}}"
+        bindtap="openSearchResult"
+      >
+        <view class="recommend-marker type-{{item.type}}"></view>
+        <view class="recommend-main">
+          <view class="list-title-line">
+            <view class="recommend-title">{{item.title}}</view>
+            <view class="board-mark">{{item.boardLabel}}</view>
+            <view wx:if="{{item.isFavorite}}" class="collection-mark">★</view>
+          </view>
+          <view class="recommend-subtitle">{{item.subtitle}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else class="section">
+      <view class="section-header">
+        <view class="section-title">本地精选</view>
+        <view class="recommend-legend">推荐 · 优惠 · 最新</view>
+      </view>
+      <view wx:if="{{!loading && carouselItems.length === 0}}" class="surface empty">暂无精选信息。</view>
+      <swiper
+        wx:else
+        class="featured-swiper"
+        autoplay="{{carouselItems.length > 1}}"
+        circular="{{carouselItems.length > 1}}"
+        interval="4500"
+        duration="420"
+        indicator-dots="{{carouselItems.length > 1}}"
+        indicator-color="rgba(18, 63, 54, 0.18)"
+        indicator-active-color="#cf6e34"
+      >
+        <swiper-item wx:for="{{carouselItems}}" wx:key="id">
+          <view
+            class="featured-card surface type-{{item.type}}"
+            data-id="{{item.id}}"
+            data-type="{{item.type}}"
+            bindtap="openRecommendation"
+          >
+            <view class="featured-media">
+              <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+              <view wx:else class="featured-placeholder placeholder-{{item.type}}">{{item.symbol}}</view>
+            </view>
+            <view class="featured-content">
+              <view class="featured-topline">
+                <view class="status-pill status-{{item.statusTone}}">{{item.statusLabel}}</view>
+                <view class="featured-action">{{item.isFavorite ? '★ 已收藏' : '查看 ›'}}</view>
+              </view>
+              <view class="recommend-title">{{item.title}}</view>
+              <view class="recommend-subtitle">{{item.subtitle}}</view>
+              <view class="recommend-meta">{{item.meta}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+  <floating-tools />
+  <bottom-nav active="home" />
+</view>

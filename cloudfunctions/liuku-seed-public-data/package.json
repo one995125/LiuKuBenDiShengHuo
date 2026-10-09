@@ -1,0 +1,13 @@
+{
+  "name": "liuku-seed-public-data",
+  "version": "1.0.0",
+  "private": true,
+  "description": "六库生活圈开发环境公开数据一次性种子函数",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

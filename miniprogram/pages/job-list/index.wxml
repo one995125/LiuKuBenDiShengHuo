@@ -1,0 +1,53 @@
+<view class="app-body">
+  <app-header title="人才招聘" subtitle="工作按需 · 只展示联系方式" badge="审核后展示" back />
+
+  <view class="app-main job-main">
+    <app-search
+      value="{{searchKeyword}}"
+      placeholder="搜索岗位、公司、地点"
+      bind:input="onSearchInput"
+      bind:confirm="onSearchConfirm"
+    />
+
+    <view class="filter-tabs">
+      <view
+        wx:for="{{filters}}"
+        wx:key="*this"
+        class="filter-tab {{selectedFilter === item ? 'active' : ''}}"
+        data-filter="{{item}}"
+        bindtap="onFilterTap"
+      >{{item}}</view>
+    </view>
+
+    <view wx:if="{{loading}}" class="surface empty">正在读取招聘信息...</view>
+    <view wx:if="{{loadError}}" class="notice">云端暂不可用，已显示最近缓存或本地招聘。</view>
+    <view wx:if="{{!loading && jobs.length === 0}}" class="surface empty">暂无匹配招聘</view>
+    <view
+      wx:for="{{jobs}}"
+      wx:key="id"
+      class="job-row surface"
+      data-id="{{item.id}}"
+      bindtap="openDetail"
+    >
+      <view class="job-type">招聘</view>
+      <view class="job-content">
+        <view class="list-title-line">
+          <view class="job-title">{{item.title}}</view>
+          <view wx:if="{{item.isFavorite}}" class="collection-mark">★</view>
+        </view>
+        <view class="job-company">{{item.companyName}}</view>
+        <view class="job-bottom">
+          <view class="job-salary">{{item.salaryRange}}</view>
+          <view class="job-valid">{{item.validUntil ? '有效期至' + item.validUntil : '电话联系'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="legal-tip">
+      提示：平台只展示招聘信息，不收简历，不承诺就业；联系前请自行核实招聘主体和岗位。
+    </view>
+  </view>
+
+  <floating-tools />
+  <bottom-nav />
+</view>

@@ -1,0 +1,287 @@
+{
+  "note": "阶段 2 索引设计清单；请在云开发控制台按集合创建，字段顺序不能随意调整。",
+  "indexes": [
+    {
+      "collection": "liuku_merchants",
+      "name": "status_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_merchants",
+      "name": "status_category_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "category", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_jobs",
+      "name": "status_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_rentals",
+      "name": "status_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_offers",
+      "name": "status_validFrom_validUntil_displayOrder_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "validFrom", "order": "asc" },
+        { "field": "validUntil", "order": "asc" },
+        { "field": "displayOrder", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_submissions",
+      "name": "ownerOpenid_appid_updatedAt",
+      "fields": [
+        { "field": "ownerOpenid", "order": "asc" },
+        { "field": "appid", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_submissions",
+      "name": "status_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_submissions",
+      "name": "type_status_updatedAt",
+      "fields": [
+        { "field": "type", "order": "asc" },
+        { "field": "status", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_submissions",
+      "name": "evidencePurgedAt_evidenceRetainUntil",
+      "fields": [
+        { "field": "evidencePurgedAt", "order": "asc" },
+        { "field": "evidenceRetainUntil", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_feedbacks",
+      "name": "ownerOpenid_status_updatedAt",
+      "fields": [
+        { "field": "ownerOpenid", "order": "asc" },
+        { "field": "status", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_feedbacks",
+      "name": "status_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_users",
+      "name": "ownerOpenid_appid",
+      "fields": [
+        { "field": "ownerOpenid", "order": "asc" },
+        { "field": "appid", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_users",
+      "name": "publicId",
+      "fields": [
+        { "field": "publicId", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_admin_logs",
+      "name": "actorUid_createdAt",
+      "fields": [
+        { "field": "actorUid", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_admin_logs",
+      "name": "createdAt",
+      "fields": [
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_jobs",
+      "name": "status_validUntil",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "validUntil", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_rentals",
+      "name": "status_validUntil",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "validUntil", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_offers",
+      "name": "status_validUntil",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "validUntil", "order": "asc" }
+      ]
+    },
+    {
+      "collection": "liuku_merchants",
+      "name": "status_hidden_deleted_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_merchants",
+      "name": "status_category_hidden_deleted_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "category", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_merchants",
+      "name": "status_category_subCategory_hidden_deleted_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "category", "order": "asc" },
+        { "field": "subCategory", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_jobs",
+      "name": "status_hidden_deleted_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_rentals",
+      "name": "status_hidden_deleted_isTop_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "isTop", "order": "desc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_offers",
+      "name": "status_hidden_deleted_validFrom_validUntil_displayOrder_updatedAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "validFrom", "order": "asc" },
+        { "field": "validUntil", "order": "asc" },
+        { "field": "displayOrder", "order": "asc" },
+        { "field": "updatedAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "entryType_entryId_status_createdAt",
+      "fields": [
+        { "field": "entryType", "order": "asc" },
+        { "field": "entryId", "order": "asc" },
+        { "field": "status", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "status_createdAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "ownerOpenid_appid_createdAt",
+      "fields": [
+        { "field": "ownerOpenid", "order": "asc" },
+        { "field": "appid", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "entryType_entryId_status_hidden_deleted_createdAt",
+      "fields": [
+        { "field": "entryType", "order": "asc" },
+        { "field": "entryId", "order": "asc" },
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "status_hidden_deleted_createdAt",
+      "fields": [
+        { "field": "status", "order": "asc" },
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    },
+    {
+      "collection": "liuku_comments",
+      "name": "hidden_deleted_createdAt",
+      "fields": [
+        { "field": "hidden", "order": "asc" },
+        { "field": "deleted", "order": "asc" },
+        { "field": "createdAt", "order": "desc" }
+      ]
+    }
+  ]
+}

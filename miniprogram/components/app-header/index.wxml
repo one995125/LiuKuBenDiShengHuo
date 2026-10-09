@@ -1,0 +1,14 @@
+<view class="header" style="padding-top: {{statusBarHeight}}px;">
+  <view class="header-nav" style="height: {{navigationHeight}}px; margin-top: {{navigationTopGap}}px;">
+    <view wx:if="{{back}}" class="back-button" bindtap="goBack">
+      <view class="back-icon"></view>
+    </view>
+    <view class="title-group {{back ? 'with-back' : ''}}">
+      <view class="title">{{title}}</view>
+      <view wx:if="{{subtitle}}" class="subtitle">{{subtitle}}</view>
+    </view>
+    <view wx:if="{{badge}}" class="badge" style="margin-right: {{menuRightInset}}px;">{{badge}}</view>
+  </view>
+  <view class="curve curve-green"></view>
+  <view class="curve curve-orange"></view>
+</view>

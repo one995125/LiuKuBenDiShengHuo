@@ -1,0 +1,175 @@
+.home-main {
+  margin-top: 0;
+  position: relative;
+  z-index: 4;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10rpx;
+  margin-top: 20rpx;
+}
+
+.quick-card {
+  min-width: 0;
+  padding: 18rpx 7rpx 16rpx;
+  border-radius: 18rpx;
+  color: #fff9ea;
+  text-align: center;
+}
+
+.quick-card.green { background: #174b40; }
+.quick-card.orange { background: #c96d36; }
+.quick-card.olive { background: #78854b; }
+.quick-card.yellow { background: #e9ad42; }
+
+.quick-symbol {
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.quick-title {
+  margin-top: 5rpx;
+  font-size: 22rpx;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.quick-desc {
+  margin-top: 3rpx;
+  font-size: 19rpx;
+  opacity: 0.86;
+  white-space: nowrap;
+}
+
+.recommend-legend {
+  color: #cf6e34;
+  font-size: 21rpx;
+}
+
+.recommend-card {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 14rpx;
+  padding: 20rpx;
+}
+
+.featured-swiper {
+  height: 250rpx;
+}
+
+.featured-swiper swiper-item {
+  box-sizing: border-box;
+  padding-bottom: 28rpx;
+}
+
+.featured-card {
+  display: flex;
+  height: 202rpx;
+  min-height: 202rpx;
+  overflow: hidden;
+  padding: 0;
+}
+
+.featured-media {
+  width: 184rpx;
+  min-width: 184rpx;
+  height: 202rpx;
+  overflow: hidden;
+}
+
+.featured-media image,
+.featured-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.featured-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 66rpx;
+  font-weight: 800;
+}
+
+.placeholder-merchant { background: #356f60; }
+.placeholder-job { background: #cf6e34; }
+.placeholder-rental { background: #7a8650; }
+.placeholder-offer { background: #efad35; }
+
+.featured-content {
+  flex: 1;
+  min-width: 0;
+  padding: 20rpx 22rpx;
+}
+
+.featured-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.featured-action {
+  color: #9d6a36;
+  font-size: 21rpx;
+}
+
+.recommend-marker {
+  width: 8rpx;
+  min-height: 74rpx;
+  border-radius: 999rpx;
+  flex-shrink: 0;
+}
+
+.recommend-marker.type-merchant { background: #34725f; }
+.recommend-marker.type-job { background: #cf6e34; }
+.recommend-marker.type-rental { background: #78854b; }
+
+.recommend-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.board-mark {
+  padding: 3rpx 9rpx;
+  border-radius: 999rpx;
+  background: #f3e4c8;
+  color: #9d6a36;
+  font-size: 19rpx;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.recommend-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12rpx;
+}
+
+.recommend-title {
+  overflow: hidden;
+  color: #173f37;
+  font-size: 27rpx;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommend-subtitle,
+.recommend-meta {
+  margin-top: 6rpx;
+  overflow: hidden;
+  color: #708079;
+  font-size: 22rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommend-meta {
+  color: #cf6e34;
+  font-weight: 700;
+}

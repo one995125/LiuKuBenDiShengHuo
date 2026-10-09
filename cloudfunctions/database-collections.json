@@ -1,0 +1,89 @@
+{
+  "environmentId": "cloud1-d6glqc7e7244211f2",
+  "namespace": "liuku_",
+  "collections": [
+    {
+      "name": "liuku_merchants",
+      "purpose": "已审核商家公开信息"
+    },
+    {
+      "name": "liuku_jobs",
+      "purpose": "已审核招聘公开信息"
+    },
+    {
+      "name": "liuku_rentals",
+      "purpose": "已审核房源公开信息"
+    },
+    {
+      "name": "liuku_offers",
+      "purpose": "已审核优惠活动公开信息"
+    },
+    {
+      "name": "liuku_submissions",
+      "purpose": "用户投稿审核池"
+    },
+    {
+      "name": "liuku_feedbacks",
+      "purpose": "纠错与投诉记录"
+    },
+    {
+      "name": "liuku_comments",
+      "purpose": "商家评论审核池，评论先审后显"
+    },
+    {
+      "name": "liuku_users",
+      "purpose": "小程序用户轻登录头像昵称资料"
+    },
+    {
+      "name": "liuku_admins",
+      "purpose": "管理员 CloudBase Auth UID 白名单，兼容开发期小程序 OPENID"
+    },
+    {
+      "name": "liuku_admin_logs",
+      "purpose": "管理员操作审计日志"
+    },
+    {
+      "name": "liuku_configs",
+      "purpose": "客服和运营配置"
+    }
+  ],
+  "defaults": {
+    "liuku_configs": [
+      {
+        "_id": "customer_service",
+        "phone": "",
+        "wechat": "",
+        "description": "客服用于信息纠错、投诉反馈和商家合作。",
+        "version": 1
+      },
+      {
+        "_id": "comment_policy",
+        "blockedWords": [],
+        "reviewWords": [],
+        "notice": "评论提交后先进入人工审核，审核通过后展示。",
+        "version": 1
+      },
+      {
+        "_id": "channel_policy",
+        "channels": {
+          "merchant": {
+            "publicVisible": true,
+            "submissionEnabled": true,
+            "adminPublishingEnabled": true
+          },
+          "rental": {
+            "publicVisible": true,
+            "submissionEnabled": true,
+            "adminPublishingEnabled": true
+          },
+          "job": {
+            "publicVisible": false,
+            "submissionEnabled": false,
+            "adminPublishingEnabled": false
+          }
+        },
+        "version": 1
+      }
+    ]
+  }
+}

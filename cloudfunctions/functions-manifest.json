@@ -1,0 +1,31 @@
+{
+  "environmentId": "cloud1-d6glqc7e7244211f2",
+  "runtime": "Nodejs18.15",
+  "functions": [
+    {
+      "name": "liuku-public-api",
+      "timeout": 10,
+      "description": "公开信息、搜索、详情和客服配置"
+    },
+    {
+      "name": "liuku-user-api",
+      "timeout": 15,
+      "description": "用户投稿、我的发布和纠错投诉"
+    },
+    {
+      "name": "liuku-admin-api",
+      "timeout": 20,
+      "description": "运营后台身份、审核、内容、配置、导入和日志"
+    },
+    {
+      "name": "liuku-maintenance",
+      "timeout": 20,
+      "description": "每日处理内容和推广到期",
+      "trigger": {
+        "name": "liuku-daily-maintenance",
+        "type": "timer",
+        "config": "0 10 2 * * * *"
+      }
+    }
+  ]
+}

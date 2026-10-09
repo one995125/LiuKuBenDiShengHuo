@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "user-profile-editor": "/components/user-profile-editor/index"
+  }
+}

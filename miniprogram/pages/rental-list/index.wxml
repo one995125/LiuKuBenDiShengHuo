@@ -1,0 +1,51 @@
+<view class="app-body">
+  <app-header title="房屋出租" subtitle="安心租房 · 平台仅展示房源" badge="平台仅展示" back />
+
+  <view class="app-main rental-main-page">
+    <app-search
+      value="{{searchKeyword}}"
+      placeholder="搜索位置、租金、户型"
+      bind:input="onSearchInput"
+      bind:confirm="onSearchConfirm"
+    />
+
+    <view class="filter-tabs">
+      <view
+        wx:for="{{filters}}"
+        wx:key="*this"
+        class="filter-tab {{selectedFilter === item ? 'active' : ''}}"
+        data-filter="{{item}}"
+        bindtap="onFilterTap"
+      >{{item}}</view>
+    </view>
+
+    <view class="rental-note">联系前请自行核实房源信息</view>
+    <button class="submission-entry-button" bindtap="openSubmission">业主 / 备案中介发布出租房源</button>
+    <view wx:if="{{loading}}" class="surface empty">正在读取房源信息...</view>
+    <view wx:if="{{loadError}}" class="notice">云端暂不可用，已显示最近缓存或本地房源。</view>
+    <view wx:if="{{!loading && rentals.length === 0}}" class="surface empty">暂无匹配房源</view>
+    <view
+      wx:for="{{rentals}}"
+      wx:key="id"
+      class="rental-row surface"
+      data-id="{{item.id}}"
+      bindtap="openDetail"
+    >
+      <image wx:if="{{item.images.length}}" class="rental-image" src="{{item.images[0]}}" mode="aspectFill" />
+      <view wx:else class="rental-placeholder color-{{index % 3}}">房</view>
+      <view class="rental-info">
+        <view class="list-title-line">
+          <view class="rental-title">{{item.title}}</view>
+          <view wx:if="{{item.isFavorite}}" class="collection-mark">★</view>
+        </view>
+        <view class="rental-meta">{{item.rent}} · {{item.location}} · {{item.area || '面积面议'}}</view>
+        <view class="rental-valid">{{item.validUntil ? '有效期至' + item.validUntil : '电话确认'}}</view>
+      </view>
+    </view>
+
+    <view class="legal-tip">平台仅提供信息展示，不参与中介撮合；请实地查看并核实权属、租金和合同。</view>
+  </view>
+
+  <floating-tools />
+  <bottom-nav />
+</view>

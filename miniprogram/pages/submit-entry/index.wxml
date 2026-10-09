@@ -1,0 +1,85 @@
+<view class="app-body">
+  <app-header title="{{pageTitle}}" subtitle="提交后由运营者人工核验，不会立即公开" back />
+  <view class="app-main submit-main">
+    <view class="notice-card">招聘频道暂未开放。本页只受理持照商家和出租房源资料。</view>
+
+    <view wx:if="{{type === 'rental'}}" class="form-card">
+      <view class="field-label">发布主体</view>
+      <picker mode="selector" range="{{roleLabels}}" value="{{roleIndex}}" bindchange="onRoleChange">
+        <view class="picker-value">{{roleLabels[roleIndex]}} ›</view>
+      </picker>
+    </view>
+
+    <view class="form-card">
+      <view class="field-label">{{type === 'merchant' ? '商家名称' : '房源标题'}} *</view>
+      <input class="field-input" value="{{form.title}}" data-field="title" bindinput="onFieldInput" />
+      <block wx:if="{{type === 'merchant'}}">
+        <view class="field-label">商家分类 *</view>
+        <picker mode="selector" range="{{categories}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+          <view class="picker-value">{{categories[categoryIndex]}} ›</view>
+        </picker>
+        <view class="field-label">二级分类 *</view>
+        <picker mode="selector" range="{{subCategories}}" value="{{subCategoryIndex}}" bindchange="onSubCategoryChange">
+          <view class="picker-value">{{subCategories[subCategoryIndex]}} ›</view>
+        </picker>
+        <view class="field-label">所在区域</view>
+        <input class="field-input" value="{{form.area}}" data-field="area" bindinput="onFieldInput" placeholder="例如：江东片区" />
+        <view class="field-label">营业时间 *</view>
+        <input class="field-input" value="{{form.businessHours}}" data-field="businessHours" bindinput="onFieldInput" placeholder="例如：09:00-21:00" />
+      </block>
+      <block wx:else>
+        <view class="field-label">租金 *</view>
+        <input class="field-input" value="{{form.rent}}" data-field="rent" bindinput="onFieldInput" placeholder="例如：1200元/月" />
+        <view class="field-label">户型 *</view>
+        <input class="field-input" value="{{form.layout}}" data-field="layout" bindinput="onFieldInput" placeholder="例如：两室一厅" />
+        <view class="field-label">面积</view>
+        <input class="field-input" value="{{form.area}}" data-field="area" bindinput="onFieldInput" placeholder="例如：80㎡" />
+        <view class="field-label">有效期 *</view>
+        <picker mode="date" value="{{form.validUntil}}" bindchange="onDateChange">
+          <view class="picker-value">{{form.validUntil || '请选择有效期'}} ›</view>
+        </picker>
+      </block>
+      <view class="field-label">{{type === 'merchant' ? '经营地址' : '房源位置'}} *</view>
+      <input class="field-input" value="{{form.location}}" data-field="location" bindinput="onFieldInput" />
+      <view class="field-label">{{type === 'merchant' ? '商家简介' : '房源说明'}} *</view>
+      <textarea class="field-textarea" value="{{form.content}}" data-field="content" bindinput="onFieldInput" maxlength="1000" />
+    </view>
+
+    <view class="form-card">
+      <view class="field-label">联系人 *</view>
+      <input class="field-input" value="{{form.contactName}}" data-field="contactName" bindinput="onFieldInput" />
+      <view class="field-label">联系电话 *</view>
+      <input class="field-input" type="text" value="{{form.phone}}" data-field="phone" bindinput="onFieldInput" />
+      <view class="field-label">微信号（选填）</view>
+      <input class="field-input" value="{{form.wechat}}" data-field="wechat" bindinput="onFieldInput" />
+    </view>
+
+    <view class="form-card">
+      <view class="card-title">公开展示图片（最多3张）</view>
+      <view class="image-grid">
+        <view wx:for="{{publicImages}}" wx:key="*this" class="image-cell">
+          <image src="{{item}}" mode="aspectFill" />
+          <view class="remove-image" data-index="{{index}}" bindtap="removePublicImage">×</view>
+        </view>
+        <view wx:if="{{publicImages.length < 3}}" class="image-add" bindtap="choosePublicImages">＋</view>
+      </view>
+    </view>
+
+    <view class="form-card">
+      <view class="card-title">私密核验材料 *</view>
+      <view class="material-tip">仅管理员可查看。可遮挡非核验所需号码，但主体名称、地址、授权关系和印章须清晰。</view>
+      <view wx:for="{{evidenceOptions}}" wx:key="type" class="evidence-row" data-type="{{item.type}}" bindtap="chooseEvidence">
+        <view><view class="evidence-title">{{item.label}}</view><view class="evidence-status">{{item.fileName}}</view></view>
+        <view class="evidence-action">{{item.selected ? '更换' : '上传'}} ›</view>
+      </view>
+    </view>
+
+    <checkbox-group class="declarations" bindchange="onDeclarationsChange">
+      <label><checkbox value="truth" />我确认提交资料真实、合法、有效。</label>
+      <label><checkbox value="display" />我授权平台公开展示联系方式和公开图片。</label>
+      <label><checkbox value="material" />我同意核验材料仅用于审核，并按规则到期清理。</label>
+    </checkbox-group>
+
+    <button class="submit-button" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submit">提交人工审核</button>
+  </view>
+</view>

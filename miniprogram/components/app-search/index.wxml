@@ -1,0 +1,14 @@
+<view class="search">
+  <view class="search-icon">
+    <view class="search-handle"></view>
+  </view>
+  <input
+    class="input"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+    confirm-type="search"
+    bindinput="onInput"
+    bindconfirm="onConfirm"
+  />
+  <view class="button" bindtap="onConfirm">搜索</view>
+</view>

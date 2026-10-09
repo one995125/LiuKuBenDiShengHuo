@@ -1,0 +1,18 @@
+<view class="nav safe-bottom">
+  <view class="item {{active === 'home' ? 'active' : ''}}" data-key="home" bindtap="onItemTap">
+    <view class="nav-icon icon-home"></view>
+    <text>首页</text>
+  </view>
+  <view class="item {{active === 'merchant' ? 'active' : ''}}" data-key="merchant" bindtap="onItemTap">
+    <view class="nav-icon icon-shop"></view>
+    <text>商家</text>
+  </view>
+  <view class="item" data-key="service" bindtap="onItemTap">
+    <view class="nav-icon icon-service"></view>
+    <text>客服</text>
+  </view>
+  <view class="item {{active === 'mine' ? 'active' : ''}}" data-key="mine" bindtap="onItemTap">
+    <view class="nav-icon icon-mine"></view>
+    <text>我的</text>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+{
+  "name": "liuku-public-api",
+  "version": "1.0.0",
+  "description": "六库生活圈公开数据云函数入口",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

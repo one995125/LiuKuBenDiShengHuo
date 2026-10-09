@@ -1,0 +1,30 @@
+{
+  "envId": "cloud1-d6glqc7e7244211f2",
+  "functionRoot": "./cloudfunctions",
+  "functions": [
+    {
+      "name": "liuku-public-api",
+      "dir": "./cloudfunctions/liuku-public-api",
+      "runtime": "Nodejs18.15",
+      "timeout": 10
+    },
+    {
+      "name": "liuku-user-api",
+      "dir": "./cloudfunctions/liuku-user-api",
+      "runtime": "Nodejs18.15",
+      "timeout": 15
+    },
+    {
+      "name": "liuku-admin-api",
+      "dir": "./cloudfunctions/liuku-admin-api",
+      "runtime": "Nodejs18.15",
+      "timeout": 20
+    },
+    {
+      "name": "liuku-maintenance",
+      "dir": "./cloudfunctions/liuku-maintenance",
+      "runtime": "Nodejs18.15",
+      "timeout": 20
+    }
+  ]
+}

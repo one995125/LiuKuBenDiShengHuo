@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "merchant-board-list": "/components/merchant-board-list/index"
+  }
+}
